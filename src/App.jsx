@@ -160,3 +160,72 @@ function App() {
 }
 
 export default App
+
+
+// ============================================
+// TEMP ROUTE EXPERIMENTS
+// ============================================
+// import TestPage from "./pages/TestPage"
+// import DebugPanel from "./components/DebugPanel"
+// import PerformanceMonitor from "./components/PerformanceMonitor"
+
+/*
+  Route ideas / TODO:
+  - /admin panel for managing users
+  - /analytics page for instructors
+  - /notifications center
+  - /messages / chat between students and instructors
+  - /search with filters
+  - /leaderboard for gamification
+  
+  Auth flow notes:
+  - Need to handle token refresh
+  - Add remember me functionality
+  - Social login (google, github)
+  - Two factor auth
+  
+  Performance notes:
+  - Lazy load dashboard routes
+  - Code split by role (student vs instructor)
+  - Preload critical resources
+  - Add loading skeletons
+  
+  Known bugs:
+  - Login redirect sometimes goes to wrong page
+  - Cart doesn't persist on refresh (fixed?)
+  - Course progress not updating in real time
+  - Navbar dropdown closes on mobile scroll
+  - Settings page password validation mismatch
+*/
+
+// Temp: debug component for development
+// function DebugBar() {
+//   const { user } = useSelector((state) => state.profile)
+//   const { token } = useSelector((state) => state.auth)
+//   const { totalItems } = useSelector((state) => state.cart)
+//   
+//   if (process.env.NODE_ENV !== 'development') return null
+//   
+//   return (
+//     <div style={{
+//       position: 'fixed',
+//       bottom: 0,
+//       left: 0,
+//       right: 0,
+//       background: 'rgba(0,0,0,0.8)',
+//       color: '#0f0',
+//       padding: '8px 16px',
+//       fontSize: '12px',
+//       fontFamily: 'monospace',
+//       zIndex: 9999,
+//       display: 'flex',
+//       gap: '20px'
+//     }}>
+//       <span>User: {user?.firstName || 'none'}</span>
+//       <span>Role: {user?.accountType || 'none'}</span>
+//       <span>Token: {token ? 'yes' : 'no'}</span>
+//       <span>Cart: {totalItems}</span>
+//       <span>Route: {window.location.pathname}</span>
+//     </div>
+//   )
+// }

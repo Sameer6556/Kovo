@@ -162,3 +162,48 @@ module.exports = {
   },
   plugins: [],
 };
+
+
+
+// ============================================
+// TAILWIND EXPERIMENTS - DRAFT
+// ============================================
+// Uncomment to test:
+// 
+// Custom utilities I was trying:
+// '.text-gradient': {
+//   'background': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+//   '-webkit-background-clip': 'text',
+//   '-webkit-text-fill-color': 'transparent',
+// },
+// '.glass': {
+//   'background': 'rgba(255, 255, 255, 0.1)',
+//   'backdrop-filter': 'blur(10px)',
+//   'border': '1px solid rgba(255, 255, 255, 0.1)',
+// },
+// '.glass-dark': {
+//   'background': 'rgba(0, 0, 0, 0.3)',
+//   'backdrop-filter': 'blur(10px)',
+//   'border': '1px solid rgba(255, 255, 255, 0.05)',
+// },
+// '.scrollbar-hide': {
+//   '-ms-overflow-style': 'none',
+//   'scrollbar-width': 'none',
+//   '&::-webkit-scrollbar': { display: 'none' },
+// },
+// '.animate-float': {
+//   'animation': 'float 6s ease-in-out infinite',
+// },
+// 
+// Custom breakpoints I was considering:
+// 'xs': '475px',
+// '3xl': '1920px',
+//
+// Extended spacing:
+// '128': '32rem',
+// '144': '36rem',
+//
+// TODO: finalize color palette
+// TODO: add custom animation keyframes
+// TODO: test on different screen sizes
+// TODO: clean up unused extensions
