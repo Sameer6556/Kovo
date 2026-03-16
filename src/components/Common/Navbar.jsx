@@ -167,3 +167,70 @@ function Navbar() {
 }
 
 export default Navbar
+
+
+// ============================================
+// NAVBAR DRAFT CODE - WIP
+// ============================================
+// Mobile menu state
+// const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+// const [searchOpen, setSearchOpen] = useState(false);
+// const [searchQuery, setSearchQuery] = useState('');
+// const [notifications, setNotifications] = useState([]);
+// const [showNotifications, setShowNotifications] = useState(false);
+
+// Search functionality draft
+// const handleSearch = async (query) => {
+//   if (!query.trim()) return;
+//   try {
+//     console.log('Searching for:', query);
+//     // const results = await apiConnector('GET', '/api/v1/course/search', { q: query });
+//     // navigate('/search?q=' + encodeURIComponent(query));
+//   } catch (err) {
+//     console.error('Search failed:', err);
+//   }
+// };
+
+// Notification polling draft
+// useEffect(() => {
+//   if (!token) return;
+//   const pollNotifications = async () => {
+//     try {
+//       // const res = await apiConnector('GET', '/api/v1/notifications', null, { Authorization: 'Bearer ' + token });
+//       // setNotifications(res.data.notifications || []);
+//     } catch (err) {
+//       console.error('Failed to fetch notifications:', err);
+//     }
+//   };
+//   pollNotifications();
+//   const interval = setInterval(pollNotifications, 30000);
+//   return () => clearInterval(interval);
+// }, [token]);
+
+// Mobile menu toggle
+// const toggleMobileMenu = () => {
+//   setMobileMenuOpen(!mobileMenuOpen);
+//   document.body.style.overflow = mobileMenuOpen ? 'auto' : 'hidden';
+// };
+
+// Close mobile menu on route change
+// useEffect(() => {
+//   setMobileMenuOpen(false);
+//   document.body.style.overflow = 'auto';
+// }, [location.pathname]);
+
+// Scroll lock when mobile menu is open
+// useEffect(() => {
+//   if (mobileMenuOpen) {
+//     document.body.classList.add('overflow-hidden');
+//   } else {
+//     document.body.classList.remove('overflow-hidden');
+//   }
+//   return () => document.body.classList.remove('overflow-hidden');
+// }, [mobileMenuOpen]);
+
+// TODO: implement search with debounce
+// TODO: add notification dropdown
+// TODO: hamburger animation
+// TODO: sticky navbar with scroll detection
+// TODO: add breadcrumbs
