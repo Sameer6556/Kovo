@@ -201,3 +201,95 @@ function Home() {
 }
 
 export default Home
+
+
+// ============================================
+// HOMEPAGE DRAFT SECTIONS
+// ============================================
+
+// Stats section draft
+// const StatsSection = () => {
+//   const stats = [
+//     { count: '5K+', label: 'Active Students' },
+//     { count: '200+', label: 'Courses' },
+//     { count: '50+', label: 'Expert Instructors' },
+//     { count: '10K+', label: 'Reviews' },
+//   ];
+//   return (
+//     <div className="bg-richblack-800 py-14">
+//       <div className="mx-auto flex w-11/12 max-w-maxContent flex-row justify-between">
+//         {stats.map((stat, i) => (
+//           <div key={i} className="text-center">
+//             <h2 className="text-3xl font-bold text-richblack-5">{stat.count}</h2>
+//             <p className="text-richblack-300">{stat.label}</p>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// Testimonials section draft
+// const TestimonialsSection = () => {
+//   const testimonials = [
+//     { name: 'John D.', role: 'Student', text: 'Great platform for learning new skills.' },
+//     { name: 'Sarah M.', role: 'Instructor', text: 'Easy to create and manage courses.' },
+//     { name: 'Mike R.', role: 'Student', text: 'The course quality is amazing.' },
+//   ];
+//   return (
+//     <div className="py-14">
+//       <h2 className="text-center text-3xl font-bold text-richblack-5 mb-10">
+//         What Our Students Say
+//       </h2>
+//       <div className="mx-auto flex w-11/12 max-w-maxContent gap-6">
+//         {testimonials.map((t, i) => (
+//           <div key={i} className="flex-1 rounded-lg bg-richblack-800 p-6">
+//             <p className="text-richblack-300 mb-4">"{t.text}"</p>
+//             <p className="font-semibold text-richblack-5">{t.name}</p>
+//             <p className="text-sm text-richblack-400">{t.role}</p>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// FAQ section draft  
+// const FAQSection = () => {
+//   const [openFaq, setOpenFaq] = useState(null);
+//   const faqs = [
+//     { q: 'How do I enroll in a course?', a: 'Click on the course and hit the Enroll button.' },
+//     { q: 'Can I get a refund?', a: 'Yes, within 30 days of purchase.' },
+//     { q: 'How do I become an instructor?', a: 'Sign up and select Instructor as your account type.' },
+//     { q: 'Are certificates provided?', a: 'Yes, upon completion of a course.' },
+//     { q: 'Is there a free trial?', a: 'Some courses offer free preview sections.' },
+//   ];
+//   return null; // TODO: implement
+// };
+
+// Newsletter section draft
+// const NewsletterSection = () => (
+//   <div className="bg-richblack-800 py-14">
+//     <div className="mx-auto w-11/12 max-w-maxContent text-center">
+//       <h2 className="text-2xl font-bold text-richblack-5 mb-4">Stay Updated</h2>
+//       <p className="text-richblack-300 mb-6">Get the latest courses and updates</p>
+//       <div className="flex justify-center gap-3">
+//         <input
+//           type="email"
+//           placeholder="Enter your email"
+//           className="rounded-lg bg-richblack-700 px-4 py-3 text-richblack-5 w-80"
+//         />
+//         <button className="rounded-lg bg-yellow-50 px-6 py-3 font-semibold text-richblack-900">
+//           Subscribe
+//         </button>
+//       </div>
+//     </div>
+//   </div>
+// );
+
+// TODO: add animated counter for stats
+// TODO: add testimonial carousel with swiper
+// TODO: add FAQ accordion
+// TODO: add newsletter signup
+// TODO: add featured courses section
+// TODO: add partner logos section
