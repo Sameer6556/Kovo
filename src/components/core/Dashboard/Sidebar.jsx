@@ -67,3 +67,55 @@ export default function Sidebar() {
     </>
   )
 }
+
+
+// ============================================
+// SIDEBAR DRAFT - RESPONSIVE BEHAVIOR
+// ============================================
+
+// Mobile sidebar state
+// const [collapsed, setCollapsed] = useState(window.innerWidth < 768);
+// const [mobileOpen, setMobileOpen] = useState(false);
+
+// Handle resize
+// useEffect(() => {
+//   const handleResize = () => {
+//     const isMobile = window.innerWidth < 768;
+//     setCollapsed(isMobile);
+//     if (!isMobile) setMobileOpen(false);
+//   };
+//   window.addEventListener('resize', handleResize);
+//   return () => window.removeEventListener('resize', handleResize);
+// }, []);
+
+// Toggle sidebar
+// const toggleSidebar = () => {
+//   if (window.innerWidth < 768) {
+//     setMobileOpen(!mobileOpen);
+//   } else {
+//     setCollapsed(!collapsed);
+//   }
+// };
+
+// Keyboard shortcut to toggle sidebar
+// useEffect(() => {
+//   const handleKeyDown = (e) => {
+//     if (e.key === '[' && (e.ctrlKey || e.metaKey)) {
+//       e.preventDefault();
+//       toggleSidebar();
+//     }
+//   };
+//   window.addEventListener('keydown', handleKeyDown);
+//   return () => window.removeEventListener('keydown', handleKeyDown);
+// }, [collapsed, mobileOpen]);
+
+// Close mobile sidebar on route change
+// useEffect(() => {
+//   setMobileOpen(false);
+// }, [location.pathname]);
+
+// TODO: add drag to resize sidebar
+// TODO: add sidebar collapse animation
+// TODO: persist collapsed state in localStorage
+// TODO: add keyboard navigation for sidebar links
+// TODO: add sidebar footer with app version
