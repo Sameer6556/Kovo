@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" width="240" height="48">
+  <defs>
+    <linearGradient id="full_dark_grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+    <linearGradient id="full_dark_grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(27, 0)">
+    <g transform="translate(24, 24) scale(0.505) translate(-100, -75)">
+      <polygon points="40,90 100,120 160,90 100,60" fill="url(#full_dark_grad2)" />
+      <polygon points="50,65 100,90 150,65 100,40" fill="url(#full_dark_grad1)" />
+      <polygon points="60,45 100,65 140,45 100,25" fill="#0891b2" />
+    </g>
+    <text x="56" y="32" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="600" fill="#333333">Kovo</text>
+  </g>
+</svg>

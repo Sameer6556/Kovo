@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <defs>
+    <linearGradient id="small_light_grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="small_light_grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0, 0)">
+    <g transform="translate(12, 12) scale(0.253) translate(-100, -75)">
+      <polygon points="40,90 100,120 160,90 100,60" fill="url(#small_light_grad2)" />
+      <polygon points="50,65 100,90 150,65 100,40" fill="url(#small_light_grad1)" />
+      <polygon points="60,45 100,65 140,45 100,25" fill="#22d3ee" />
+    </g>
+  </g>
+</svg>
