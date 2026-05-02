@@ -10,7 +10,7 @@
 	"keywords": [
 		"kovo-backend"
 	],
-	"author": "Saikat Mukherjee",
+	"author": "Sameer6556",
 	"license": "ISC",
 	"dependencies": {
 		"bcrypt": "^5.1.0",
