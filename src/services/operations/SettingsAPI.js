@@ -37,7 +37,7 @@ export function updateDisplayPicture(token, formData) {
       dispatch(setUser(response.data.data))
     } catch (error) {
       console.log("UPDATE_DISPLAY_PICTURE_API API ERROR............", error)
-      toast.error("Could Not Update Display Picture")
+      toast.error(error?.response?.data?.message || "Could not update profile picture.")
     }
     toast.dismiss(toastId)
   }
@@ -64,7 +64,7 @@ export function updateProfile(token, formData) {
       toast.success("Profile Updated Successfully")
     } catch (error) {
       console.log("UPDATE_PROFILE_API API ERROR............", error)
-      toast.error("Could Not Update Profile")
+      toast.error(error?.response?.data?.message || "Could not update profile.")
     }
     toast.dismiss(toastId)
   }
@@ -84,7 +84,7 @@ export async function changePassword(token, formData) {
     toast.success("Password Changed Successfully")
   } catch (error) {
     console.log("CHANGE_PASSWORD_API API ERROR............", error)
-    toast.error(error.response.data.message)
+    toast.error(error?.response?.data?.message || "Could not change password.")
   }
   toast.dismiss(toastId)
 }
@@ -105,7 +105,7 @@ export function deleteProfile(token, navigate) {
       dispatch(logout(navigate))
     } catch (error) {
       console.log("DELETE_PROFILE_API API ERROR............", error)
-      toast.error("Could Not Delete Profile")
+      toast.error(error?.response?.data?.message || "Could not delete account.")
     }
     toast.dismiss(toastId)
   }

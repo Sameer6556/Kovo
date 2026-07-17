@@ -11,6 +11,7 @@ import RatingStars from "../components/Common/RatingStars"
 import CourseAccordionBar from "../components/core/Course/CourseAccordionBar"
 import CourseDetailsCard from "../components/core/Course/CourseDetailsCard"
 import { formatDate } from "../services/formatDate"
+import formatPrice from "../utils/formatPrice"
 import { fetchCourseDetails } from "../services/operations/courseDetailsAPI"
 import { BuyCourse } from "../services/operations/studentFeaturesAPI"
 import GetAvgRating from "../utils/avgRating"
@@ -171,7 +172,7 @@ function CourseDetails() {
             </div>
             <div className="flex w-full flex-col gap-4 border-y border-y-richblack-500 py-4 lg:hidden">
               <p className="space-x-3 pb-4 text-3xl font-semibold text-richblack-5">
-                ₹{price}
+                {formatPrice(price)}
               </p>
               <button className="yellowButton" onClick={handleBuyCourse}>
                 Buy Now

@@ -42,20 +42,20 @@ function Home() {
                 Book a demo
               </CTAButton>
             </div>
-            {/* stats */}
-            <div className="mt-2 flex items-center gap-8 border-t border-richblack-700 pt-6">
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold tracking-tight">50,000+</span>
-                <span className="text-[13px] text-richblack-300">Learners</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold tracking-tight">200+</span>
-                <span className="text-[13px] text-richblack-300">Courses</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold tracking-tight">4.8/5</span>
-                <span className="text-[13px] text-richblack-300">Avg. rating</span>
-              </div>
+            {/* value props */}
+            <div className="mt-2 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-richblack-700 pt-6 text-[14px] text-richblack-100">
+              <span className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-caribbeangreen-200"></span>
+                Self-paced learning
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-caribbeangreen-200"></span>
+                Hands-on projects
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-caribbeangreen-200"></span>
+                Learn from experts
+              </span>
             </div>
           </div>
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 import GetAvgRating from "../../../utils/avgRating"
+import formatPrice from "../../../utils/formatPrice"
 import RatingStars from "../../Common/RatingStars"
 
 function Course_Card({ course, Height }) {
@@ -37,7 +38,7 @@ function Course_Card({ course, Height }) {
                 {course?.ratingAndReviews?.length} Ratings
               </span>
             </div>
-            <p className="text-xl font-bold text-richblack-5">₹{course?.price}</p>
+            <p className="text-xl font-bold text-richblack-5">{formatPrice(course?.price)}</p>
           </div>
         </div>
       </Link>

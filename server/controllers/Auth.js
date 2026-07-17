@@ -34,15 +34,14 @@ exports.signup = async (req, res) => {
     ) {
       return res.status(403).send({
         success: false,
-        message: "All Fields are required",
+        message: "Please fill in all the required fields.",
       })
     }
     // Check if password and confirm password match
     if (password !== confirmPassword) {
       return res.status(400).json({
         success: false,
-        message:
-          "Password and Confirm Password do not match. Please try again.",
+        message: "Passwords do not match. Please try again.",
       })
     }
 
@@ -51,7 +50,7 @@ exports.signup = async (req, res) => {
     if (existingUser) {
       return res.status(400).json({
         success: false,
-        message: "User already exists. Please sign in to continue.",
+        message: "An account with this email already exists. Please sign in instead.",
       })
     }
 
@@ -62,13 +61,13 @@ exports.signup = async (req, res) => {
       // OTP not found for the email
       return res.status(400).json({
         success: false,
-        message: "The OTP is not valid",
+        message: "Your OTP has expired. Please request a new one.",
       })
     } else if (otp !== response[0].otp) {
       // Invalid OTP
       return res.status(400).json({
         success: false,
-        message: "The OTP is not valid",
+        message: "The OTP you entered is incorrect. Please try again.",
       })
     }
 
@@ -123,7 +122,7 @@ exports.login = async (req, res) => {
       // Return 400 Bad Request status code with error message
       return res.status(400).json({
         success: false,
-        message: `Please Fill up All the Required Fields`,
+        message: `Please fill in all the required fields.`,
       })
     }
 
@@ -135,7 +134,7 @@ exports.login = async (req, res) => {
       // Return 401 Unauthorized status code with error message
       return res.status(401).json({
         success: false,
-        message: `User is not Registered with Us Please SignUp to Continue`,
+        message: `This email isn't registered yet. Please sign up to continue.`,
       })
     }
 
@@ -166,7 +165,7 @@ exports.login = async (req, res) => {
     } else {
       return res.status(401).json({
         success: false,
-        message: `Password is incorrect`,
+        message: `Incorrect password. Please try again.`,
       })
     }
   } catch (error) {
@@ -174,7 +173,7 @@ exports.login = async (req, res) => {
     // Return 500 Internal Server Error status code with error message
     return res.status(500).json({
       success: false,
-      message: `Login Failure Please Try Again`,
+      message: `Something went wrong while logging in. Please try again.`,
     })
   }
 }
@@ -193,31 +192,27 @@ exports.sendotp = async (req, res) => {
       // Return 401 Unauthorized status code with error message
       return res.status(401).json({
         success: false,
-        message: `User is Already Registered`,
+        message: `An account with this email already exists. Please log in instead.`,
       })
     }
 
-    var otp = otpGenerator.generate(6, {
+    const otpOptions = {
       upperCaseAlphabets: false,
       lowerCaseAlphabets: false,
       specialChars: false,
-    })
-    const result = await OTP.findOne({ otp: otp })
-    console.log("Result is Generate OTP Func")
-    console.log("OTP", otp)
-    console.log("Result", result)
+    }
+    let otp = otpGenerator.generate(6, otpOptions)
+    // Ensure the generated OTP is unique (re-query on each collision).
+    let result = await OTP.findOne({ otp: otp })
     while (result) {
-      otp = otpGenerator.generate(6, {
-        upperCaseAlphabets: false,
-      })
+      otp = otpGenerator.generate(6, otpOptions)
+      result = await OTP.findOne({ otp: otp })
     }
     const otpPayload = { email, otp }
-    const otpBody = await OTP.create(otpPayload)
-    console.log("OTP Body", otpBody)
+    await OTP.create(otpPayload)
     res.status(200).json({
       success: true,
-      message: `OTP Sent Successfully`,
-      otp,
+      message: `OTP sent successfully. Please check your email.`,
     })
   } catch (error) {
     console.log(error.message)

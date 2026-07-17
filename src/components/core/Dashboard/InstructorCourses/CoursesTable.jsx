@@ -15,6 +15,7 @@ import {
   fetchInstructorCourses,
 } from "../../../../services/operations/courseDetailsAPI"
 import { COURSE_STATUS } from "../../../../utils/constants"
+import formatPrice from "../../../../utils/formatPrice"
 import ConfirmationModal from "../../../Common/ConfirmationModal"
 
 export default function CoursesTable({ courses, setCourses }) {
@@ -39,9 +40,9 @@ export default function CoursesTable({ courses, setCourses }) {
 
   return (
     <>
-      <Table className="rounded-xl border border-richblack-800 ">
+      <Table className="rounded-xl border border-richblack-600 ">
         <Thead>
-          <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+          <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-600 px-6 py-2">
             <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
               Courses
             </Th>
@@ -59,16 +60,16 @@ export default function CoursesTable({ courses, setCourses }) {
         <Tbody>
           {courses?.length === 0 ? (
             <Tr>
-              <Td className="py-10 text-center text-2xl font-medium text-richblack-100">
-                No courses found
-                {/* TODO: Need to change this state */}
+              <Td className="py-12 text-center text-lg font-medium text-richblack-300">
+                You haven't created any courses yet. Click "Add Course" to
+                publish your first one.
               </Td>
             </Tr>
           ) : (
             courses?.map((course) => (
               <Tr
                 key={course._id}
-                className="flex gap-x-10 border-b border-richblack-800 px-6 py-8"
+                className="flex gap-x-10 border-b border-richblack-600 px-6 py-8"
               >
                 <Td className="flex flex-1 gap-x-4">
                   <img
@@ -93,13 +94,13 @@ export default function CoursesTable({ courses, setCourses }) {
                       Created: {formatDate(course.createdAt)}
                     </p>
                     {course.status === COURSE_STATUS.DRAFT ? (
-                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-pink-100">
+                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-brown-5 px-2 py-[2px] text-[12px] font-medium text-brown-400">
                         <HiClock size={14} />
                         Drafted
                       </p>
                     ) : (
-                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
-                        <div className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 text-richblack-700">
+                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-caribbeangreen-5 px-2 py-[2px] text-[12px] font-medium text-caribbeangreen-300">
+                        <div className="flex h-3 w-3 items-center justify-center rounded-full bg-caribbeangreen-300 text-white">
                           <FaCheck size={8} />
                         </div>
                         Published
@@ -111,7 +112,7 @@ export default function CoursesTable({ courses, setCourses }) {
                   2hr 30min
                 </Td>
                 <Td className="text-sm font-medium text-richblack-100">
-                  ₹{course.price}
+                  {formatPrice(course.price)}
                 </Td>
                 <Td className="text-sm font-medium text-richblack-100 ">
                   <button

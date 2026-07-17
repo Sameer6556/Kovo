@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
+import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
 import { BsChevronDown } from "react-icons/bs"
 import { useSelector } from "react-redux"
 import { Link, matchPath, useLocation } from "react-router-dom"
@@ -38,6 +38,12 @@ function Navbar() {
 
   const [subLinks, setSubLinks] = useState([])
   const [loading, setLoading] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  // Close the mobile menu whenever the route changes.
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [location.pathname])
 
   useEffect(() => {
     ; (async () => {
@@ -158,10 +164,89 @@ function Navbar() {
           )}
           {token !== null && <ProfileDropdown />}
         </div>
-        <button className="mr-4 md:hidden">
-          <AiOutlineMenu fontSize={24} fill="#71717a" />
+        <button
+          className="text-richblack-100 md:hidden"
+          onClick={() => setMobileOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+        >
+          {mobileOpen ? (
+            <AiOutlineClose fontSize={24} />
+          ) : (
+            <AiOutlineMenu fontSize={24} />
+          )}
         </button>
       </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="absolute left-0 top-full w-full border-b border-richblack-700 bg-white shadow-card md:hidden">
+          <div className="mx-auto flex w-11/12 max-w-maxContent flex-col py-3">
+            {NavbarLinks.map((link, index) =>
+              link.path ? (
+                <Link
+                  key={index}
+                  to={link.path}
+                  className={`rounded-lg px-2 py-3 text-[15px] font-medium ${
+                    matchRoute(link.path)
+                      ? "text-blue-400"
+                      : "text-richblack-100"
+                  }`}
+                >
+                  {link.title}
+                </Link>
+              ) : (
+                <div key={index} className="px-2 py-3">
+                  <p className="mb-1 text-[13px] font-semibold uppercase tracking-wide text-richblack-400">
+                    {link.title}
+                  </p>
+                  <div className="flex flex-col">
+                    {Array.isArray(subLinks) && subLinks.length ? (
+                      subLinks.map((subLink, i) => (
+                        <Link
+                          key={i}
+                          to={`/catalog/${subLink.name
+                            .split(" ")
+                            .join("-")
+                            .toLowerCase()}`}
+                          className="py-2 pl-2 text-[15px] text-richblack-100"
+                        >
+                          {subLink.name}
+                        </Link>
+                      ))
+                    ) : (
+                      <p className="pl-2 text-[14px] text-richblack-300">
+                        No Courses Found
+                      </p>
+                    )}
+                  </div>
+                </div>
+              )
+            )}
+
+            {token === null ? (
+              <div className="mt-2 flex gap-3 px-2">
+                <Link to="/login" className="flex-1">
+                  <button className="w-full rounded-lg border border-richblack-600 py-2 text-[15px] font-medium text-richblack-5">
+                    Log in
+                  </button>
+                </Link>
+                <Link to="/signup" className="flex-1">
+                  <button className="w-full rounded-lg bg-richblack-5 py-2 text-[15px] font-semibold text-white">
+                    Sign up
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <Link
+                to="/dashboard/my-profile"
+                className="mt-1 rounded-lg px-2 py-3 text-[15px] font-medium text-richblack-100"
+              >
+                Dashboard
+              </Link>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

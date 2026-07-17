@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom"
 
 import { addToCart } from "../../../slices/cartSlice"
 import { ACCOUNT_TYPE } from "../../../utils/constants"
+import formatPrice from "../../../utils/formatPrice"
 
 // const CourseIncludes = [
 //   "8 hours on-demand video",
@@ -67,7 +68,7 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
 
         <div className="px-4">
           <div className="space-x-3 pb-4 text-3xl font-bold">
-            ₹{CurrentPrice}
+            {formatPrice(CurrentPrice)}
           </div>
           <div className="flex flex-col gap-4">
             <button

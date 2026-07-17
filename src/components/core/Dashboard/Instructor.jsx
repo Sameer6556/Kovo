@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 
 import { fetchInstructorCourses } from "../../../services/operations/courseDetailsAPI"
 import { getInstructorData } from "../../../services/operations/profileAPI"
+import formatPrice from "../../../utils/formatPrice"
 import InstructorChart from "./InstructorDashboard/InstructorChart"
 
 export default function Instructor() {
@@ -82,7 +83,7 @@ export default function Instructor() {
                 <div>
                   <p className="text-lg text-richblack-200">Total Income</p>
                   <p className="text-3xl font-semibold text-richblack-50">
-                    ₹{totalAmount}
+                    {formatPrice(totalAmount)}
                   </p>
                 </div>
               </div>
@@ -116,7 +117,7 @@ export default function Instructor() {
                         |
                       </p>
                       <p className="text-xs font-medium text-richblack-300">
-                        ₹{course.price}
+                        {formatPrice(course.price)}
                       </p>
                     </div>
                   </div>

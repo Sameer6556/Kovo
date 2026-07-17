@@ -4,6 +4,7 @@ import ReactStars from "react-rating-stars-component"
 import { useDispatch, useSelector } from "react-redux"
 
 import { removeFromCart } from "../../../../slices/cartSlice"
+import formatPrice from "../../../../utils/formatPrice"
 
 export default function RenderCartCourses() {
   const { cart } = useSelector((state) => state.cart)
@@ -55,8 +56,8 @@ export default function RenderCartCourses() {
               <RiDeleteBin6Line />
               <span>Remove</span>
             </button>
-            <p className="mb-6 text-3xl font-medium text-yellow-100">
-              ₹ {course?.price}
+            <p className="mb-6 text-2xl font-bold text-richblack-5">
+              {formatPrice(course?.price)}
             </p>
           </div>
         </div>

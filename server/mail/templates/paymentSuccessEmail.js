@@ -67,8 +67,7 @@ exports.paymentSuccessEmail = (name, amount, orderId, paymentId) => {
     
     <body>
         <div class="container">
-            <a href="https://learnstack-e171.vercel.app"><img class="logo" src="https://i.ibb.co/qMdLgzDn/logo.png"
-                    alt="Kovo Logo"></a>
+            <a href="${process.env.FRONTEND_URL || "http://localhost:3000"}"><img src="https://res.cloudinary.com/dmy5taog4/image/upload/Profile/kovo-logo.png" alt="Kovo" width="120" style="display:block;border:0;outline:none;text-decoration:none;"></a>
             <div class="message">Course Payment Confirmation</div>
             <div class="body">
                 <p>Dear ${name},</p>

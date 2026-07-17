@@ -33,16 +33,27 @@ export default function EnrolledCourses() {
 
   return (
     <>
-      <div className="text-3xl text-richblack-50">Enrolled Courses</div>
+      <div className="text-3xl font-semibold text-richblack-5">Enrolled Courses</div>
       {!enrolledCourses ? (
         <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
           <div className="spinner"></div>
         </div>
       ) : !enrolledCourses.length ? (
-        <p className="grid h-[10vh] w-full place-content-center text-richblack-5">
-          You have not enrolled in any course yet.
-          {/* TODO: Modify this Empty State */}
-        </p>
+        <div className="mt-16 flex flex-col items-center gap-4 text-center">
+          <p className="text-2xl font-semibold text-richblack-5">
+            You haven't enrolled in any course yet
+          </p>
+          <p className="max-w-sm text-richblack-300">
+            Browse the catalog, pick a course that excites you, and it'll show up
+            right here.
+          </p>
+          <button
+            onClick={() => navigate("/")}
+            className="mt-2 rounded-full bg-richblack-5 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-richblack-25"
+          >
+            Explore courses
+          </button>
+        </div>
       ) : (
         <div className="my-8 text-richblack-5">
           {/* Headings */}
