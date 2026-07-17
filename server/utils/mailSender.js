@@ -10,6 +10,12 @@ const mailSender = async (email, title, body) => {
         pass: process.env.MAIL_PASS,
       },
       secure: false,
+      // Fail fast instead of hanging indefinitely if the SMTP connection
+      // can't be established (e.g. the host restricts outbound SMTP) —
+      // without these, a stuck connection hangs the whole request.
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
     })
 
     let info = await transporter.sendMail({
@@ -21,8 +27,8 @@ const mailSender = async (email, title, body) => {
     console.log(info.response)
     return info
   } catch (error) {
-    console.log(error.message)
-    return error.message
+    console.log("MAIL SEND ERROR:", error.message)
+    throw error
   }
 }
 
