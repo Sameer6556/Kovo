@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 // import CourseCard from "../components/Catalog/CourseCard"
 // import CourseSlider from "../components/Catalog/CourseSlider"
@@ -10,7 +10,6 @@ import CourseSlider from "../components/core/Catalog/Course_Slider"
 import { apiConnector } from "../services/apiConnector"
 import { categories } from "../services/apis"
 import { getCatalogPageData } from "../services/operations/pageAndComponntDatas"
-import Error from "./Error"
 
 function Catalog() {
   const { loading } = useSelector((state) => state.profile)
@@ -53,7 +52,26 @@ function Catalog() {
     )
   }
   if (!loading && !catalogPageData.success) {
-    return <Error />
+    const prettyName = catalogName?.split("-").join(" ")
+    return (
+      <div className="grid min-h-[calc(100vh-4rem)] place-items-center px-4">
+        <div className="flex max-w-md flex-col items-center gap-4 text-center">
+          <h1 className="text-2xl font-semibold capitalize text-richblack-5">
+            {prettyName}
+          </h1>
+          <p className="text-richblack-300">
+            No courses have been published in this category yet. New courses are
+            added regularly — check back soon.
+          </p>
+          <Link
+            to="/"
+            className="mt-2 rounded-full bg-richblack-5 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-richblack-25"
+          >
+            Browse other categories
+          </Link>
+        </div>
+      </div>
+    )
   }
 
   return (
