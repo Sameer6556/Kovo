@@ -17,7 +17,7 @@ the MERN stack.
 ## Project structure
 
 ```
-Learnstack/
+kovo/
 ├── src/            # React client
 ├── server/         # Express API + MongoDB models
 ├── public/

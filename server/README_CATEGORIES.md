@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide explains how to populate your StudyNotion database with course categories, which are required for instructors to create courses.
+This guide explains how to populate your Kovo database with course categories, which are required for instructors to create courses.
 
 ## Quick Start
 
@@ -10,7 +10,7 @@ This guide explains how to populate your StudyNotion database with course catego
 
 1. **Navigate to the server directory:**
    ```bash
-   cd d:\studynotion\server
+   cd d:\kovo\server
    ```
 
 2. **Run the seeding script:**
@@ -99,16 +99,16 @@ If you see a warning about existing categories, the script will not modify your 
 
 **Example `.env` configuration:**
 ```
-MONGODB_URL=mongodb://localhost:27017/studynotion
+MONGODB_URL=mongodb://localhost:27017/kovo
 # or for MongoDB Atlas:
-MONGODB_URL=mongodb+srv://username:password@cluster.mongodb.net/studynotion
+MONGODB_URL=mongodb+srv://username:password@cluster.mongodb.net/kovo
 ```
 
 ### Issue: "Module not found"
 
 **Install dependencies:**
 ```bash
-cd d:\studynotion\server
+cd d:\kovo\server
 npm install
 ```
 
