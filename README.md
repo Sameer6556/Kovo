@@ -66,7 +66,6 @@ Kovo is two apps and is deployed separately:
   command: `node index.js`. Add all the server env variables in the host's
   dashboard.
 - **Frontend** (`src/`) → Vercel or Netlify. Set `REACT_APP_BASE_URL` to the
-  deployed backend URL (e.g. `https://your-api-host.com/api/v1`) and redeploy
-  (React env vars are baked in at build time).
+  deployed backend URL (e.g. `https://your-api-host.com/api/v1`) and redeploy.
 
-> Never commit your real `.env` files — set secrets in the hosting dashboards.
+
