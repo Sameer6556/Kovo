@@ -101,7 +101,7 @@ If you see a warning about existing categories, the script will not modify your 
 ```
 MONGODB_URL=mongodb://localhost:27017/kovo
 # or for MongoDB Atlas:
-MONGODB_URL=mongodb+srv://username:password@cluster.mongodb.net/kovo
+MONGODB_URL=mongodb+srv://<DB_USER>:<DB_PASSWORD>@<CLUSTER_HOST>/kovo
 ```
 
 ### Issue: "Module not found"
