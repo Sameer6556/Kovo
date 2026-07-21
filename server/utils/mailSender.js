@@ -6,12 +6,12 @@ const mailSender = async (email, title, body) => {
   try {
     let transporter = nodemailer.createTransport({
       host: process.env.MAIL_HOST,
-      port: 587,
+      port: 465,
       auth: {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS,
       },
-      secure: false,
+      secure: true,
       // Fail fast instead of hanging forever if SMTP is blocked/unreachable.
       connectionTimeout: 10000,
       greetingTimeout: 10000,
