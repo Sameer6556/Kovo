@@ -1,36 +1,60 @@
-const nodemailer = require("nodemailer")
+const https = require("https")
 
-// Gmail SMTP — the exact setup that delivered reliably before. Works on any
-// host that permits outbound SMTP (localhost, Fly.io, Railway, a VPS…).
-// Does NOT work on Render, which blocks SMTP ports.
-const mailSender = async (email, title, body) => {
-  try {
-    let transporter = nodemailer.createTransport({
-      host: process.env.MAIL_HOST,
-      port: 587,
-      auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS,
-      },
-      secure: false,
-      // Fail fast rather than hang if SMTP is ever unreachable.
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
-      socketTimeout: 15000,
-    })
+// Sends email through Promailer's HTTP API over HTTPS (port 443), so it works
+// on Render (which blocks SMTP). Promailer relays through the Gmail SMTP
+// connection configured in its dashboard — so Gmail is the real sender and
+// deliverability stays good.
+//
+// Required env: PROMAILER_API_KEY
+// Optional env: PROMAILER_SMTP_ID (route via a specific connection),
+//               MAIL_USER (the "from" address; defaults to the connection's).
+//
+// Public signature unchanged: mailSender(email, title, body).
+const mailSender = (email, title, body) => {
+  const payload = JSON.stringify({
+    to: email,
+    subject: title,
+    html: body,
+    from: process.env.MAIL_USER, // omitted if undefined → uses connection default
+    smtpId: process.env.PROMAILER_SMTP_ID, // omitted if undefined → default connection
+  })
 
-    let info = await transporter.sendMail({
-      from: `"Kovo" <${process.env.MAIL_USER}>`, // sender address
-      to: `${email}`, // list of receivers
-      subject: `${title}`, // Subject line
-      html: `${body}`, // html body
-    })
-    console.log(info.response)
-    return info
-  } catch (error) {
-    console.log("MAIL SEND ERROR:", error.message)
-    throw error
+  const options = {
+    hostname: "mailserver.automationlounge.com",
+    path: "/api/v1/messages/send",
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.PROMAILER_API_KEY}`,
+      "Content-Type": "application/json",
+      "Content-Length": Buffer.byteLength(payload),
+    },
+    timeout: 15000,
   }
+
+  return new Promise((resolve, reject) => {
+    const req = https.request(options, (res) => {
+      let data = ""
+      res.on("data", (chunk) => (data += chunk))
+      res.on("end", () => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          console.log("Email sent via Promailer:", data)
+          resolve(JSON.parse(data || "{}"))
+        } else {
+          console.log("MAIL SEND ERROR:", res.statusCode, data)
+          reject(new Error(`Promailer error ${res.statusCode}: ${data}`))
+        }
+      })
+    })
+    req.on("error", (err) => {
+      console.log("MAIL SEND ERROR:", err.message)
+      reject(err)
+    })
+    req.on("timeout", () => {
+      req.destroy(new Error("Promailer request timed out"))
+    })
+    req.write(payload)
+    req.end()
+  })
 }
 
 module.exports = mailSender
