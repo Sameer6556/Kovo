@@ -57,8 +57,13 @@ function VerifyEmail() {
           <h1 className="text-richblack-5 font-semibold text-[1.875rem] leading-[2.375rem]">
             Verify Email
           </h1>
-          <p className="text-[1.125rem] leading-[1.625rem] my-4 text-richblack-100">
-            A verification code has been sent to you. Enter the code below
+          <p className="text-[1.125rem] leading-[1.625rem] mt-4 mb-2 text-richblack-100">
+            A verification code has been sent to your email. Enter it below.
+          </p>
+          <p className="mb-4 rounded-lg border border-richblack-700 bg-richblack-800 px-3 py-2 text-sm text-richblack-300">
+            📩 Can't find it? Please check your{" "}
+            <span className="font-medium text-richblack-5">Spam / Junk</span>{" "}
+            folder — the code sometimes lands there.
           </p>
           <form onSubmit={handleVerifyAndSignup}>
             <OtpInput
@@ -94,7 +99,7 @@ function VerifyEmail() {
               </p>
             </Link>
             <button
-              className="flex items-center text-blue-100 gap-x-2"
+              className="flex items-center text-blue-400 gap-x-2"
               onClick={() => dispatch(sendOtp(signupData.email, navigate))}
             >
               <RxCountdownTimer />
