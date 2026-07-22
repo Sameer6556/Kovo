@@ -38,7 +38,7 @@ function Home() {
                   <FaArrowRight />
                 </div>
               </CTAButton>
-              <CTAButton active={false} linkto={"/login"}>
+              <CTAButton active={false} linkto={"/contact"}>
                 Book a demo
               </CTAButton>
             </div>
@@ -96,7 +96,7 @@ function Home() {
             }}
             ctabtn2={{
               btnText: "Learn More",
-              link: "/signup",
+              link: "/about",
               active: false,
             }}
             codeColor={"text-yellow-25"}
@@ -125,7 +125,7 @@ function Home() {
             }}
             ctabtn2={{
               btnText: "Learn More",
-              link: "/signup",
+              link: "/about",
               active: false,
             }}
             codeColor={"text-richblack-5"}
@@ -145,13 +145,13 @@ function Home() {
           <div className="mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8">
             <div className="lg:h-[150px]"></div>
             <div className="flex flex-row gap-7 lg:mt-8">
-              <CTAButton active={true} linkto={"/signup"}>
+              <CTAButton active={true} linkto={"/catalog/web-development"}>
                 <div className="flex items-center gap-2">
                   Explore Full Catalog
                   <FaArrowRight />
                 </div>
               </CTAButton>
-              <CTAButton active={false} linkto={"/login"}>
+              <CTAButton active={false} linkto={"/about"}>
                 Learn More
               </CTAButton>
             </div>
@@ -171,7 +171,7 @@ function Home() {
                 competitive professional takes more than just technical
                 skills — it takes the right guidance and real practice.
               </div>
-              <CTAButton active={true} linkto={"/signup"}>
+              <CTAButton active={true} linkto={"/about"}>
                 <div className="">Learn More</div>
               </CTAButton>
             </div>
